@@ -31,7 +31,7 @@ public:
         this->studentPreferences = studentPrefs;
         this->hospitalMatches = vector<int>(n, -1); // -1 indicates unmatched
         this->studentMatches = vector<int>(n, -1); // -1 indicates unmatched
-        this->hospitalNextProposal = vector<int>(n, 0);
+        this->hospitalNextProposal = vector<int>(n, 0); // index of next student to propose to for each hospital
         this->counter = 0;
 
         // step 1 of the given pseudocode from chapter 1 slides
@@ -45,16 +45,53 @@ public:
             return; // no matching needed for 0 hospitals/students
         }
 
-        while(!freeHospitals.empty()){ // the populated queue will be iterated through 
+        while(!freeHospitals.empty()){ 
             // "some hospital is free and hasn't been matched/assigned to every applicant"
             int hospital = freeHospitals.front();
             freeHospitals.pop(); // removes the hospital from the queue as it is being processed
+            //"a = 1st applicant on h's list to whom h has not been matched"
             int student = hospitalPreferences[hospital][hospitalNextProposal[hospital]]; // accesses the array of student preferences for the specific hospital
             
-            hospitalNextProposal[hospital]++; // move to the next student for future proposals
+            if(hospitalNextProposal[hospital] >= n){
+                continue;
+            }
+
+            hospitalNextProposal[hospital]++;
             counter++; // increment proposal counter
+            int curr = studentMatches[student];
 
-
+            if(studentMatches[student] == -1){ // "if (a is free)"
+                hospitalMatches[hospital] = student;
+                studentMatches[student] = hospital;
+            }else if (tradeUp(student, hospital)){ // "else if (a prefers h to her/his current assignment h')"
+                hospitalMatches[hospital] = student;
+                studentMatches[student] = hospital;
+            }else{ // "a rejects h"
+                hospitalMatches[curr] = -1; 
+                freeHospitals.push(curr); 
+            }
         }
     }
+
+    // helper function for "trade up" step
+    bool tradeUp(int student, int newHospital){
+        int curr = studentMatches[student];
+        for(int pref : studentPreferences[student]){
+            if(pref == newHospital){
+                return true;
+            }
+            if(pref == curr){
+                return false; 
+            }
+        }
+        return false; 
+    }
+
+    void print(){
+        cout << counter << endl;
+        for(int i = 0; i < n; i++){
+            cout << i << " " << hospitalMatches[i] << endl;
+        }
+    }
+    
 };
