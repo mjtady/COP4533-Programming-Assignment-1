@@ -1,0 +1,7 @@
+# ninja log v5
+1	84	7915290978539193	CMakeFiles/COP4533_Programming_Assignment_1.dir/src/verifier.cpp.obj	8a09847fdd04ec20
+11	402	7915315768328216	CMakeFiles/COP4533_Programming_Assignment_1.dir/src/matcher.cpp.obj	c7aafc0c21738152
+10	89	7915317376019415	CMakeFiles/COP4533_Programming_Assignment_1.dir/src/test.cpp.obj	2e09de0a0f065963
+2	367	7915291203937827	CMakeFiles/COP4533_Programming_Assignment_1.dir/src/terminal.cpp.obj	b0f708797e63c164
+3	605	7915317381203566	CMakeFiles/COP4533_Programming_Assignment_1.dir/src/main.cpp.obj	c1b3642e08ababb7
+605	758	7915317382678942	COP4533_Programming_Assignment_1.exe	b31855ba6ff24e7e
