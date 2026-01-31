@@ -7,3 +7,5 @@
 
 # Part C : We used a python script to make a graph out of the .csv output file from main.cpp
 # To generate the graph, run the scalability tester, and run the plot.py to generate the graph.
+
+# Observations: As n increases, verification becomes too slow and bottlenecks. The matching algorithm scales well, but as n increases, the verification becomes too slow. 
