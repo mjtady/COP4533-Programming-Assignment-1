@@ -87,7 +87,7 @@ int main(){
 
     // will write the header
     ofstream outFile(fullPath);
-    outFile << "n,matching_time_microseconds,verification_time_microseconds\n";
+    outFile << "n,matchingTime,verificationTime\n";
 
     for(int i = 1; i <= power; i++){
         int n = pow(2, i);
