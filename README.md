@@ -19,6 +19,8 @@ For Part C, to address the issues with graphing in C++, we created a main.cpp fi
 
 # Observations: 
 The matching algorithm scales well alongside the increase of n; however as n increases, the verification runtime is much slower as shown by the graph. The runtime is recorded in microseconds for closer analysis.
+# Notes:
+I would have liked it if our python script was able to also take in user input about what files we wanted to graph rather than changing it in the plot.py code
 
 # How To Compile
 1. cd src
