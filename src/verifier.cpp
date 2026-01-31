@@ -62,7 +62,7 @@ bool checkStable(vector<int> hospitalMatches, vector<int> studentMatches,
         
         //check preferences
         for (int i = 0;i < n; i++) {
-            int potStudent = hospitalPreferences[h][i];
+            int potStudent = hospitalPreferences[h-1][i];
             if (potStudent == currentStudent) {
                 break;
             }
@@ -70,7 +70,7 @@ bool checkStable(vector<int> hospitalMatches, vector<int> studentMatches,
             
             //check if this student prefers hospital h over their current match
             for (int j = 0;j < n; j++) {
-                int preferredHospital = studentPreferences[potStudent][j];
+                int preferredHospital = studentPreferences[potStudent-1][j];
                 
                 //blocking pair check
                 if (preferredHospital == h) {
