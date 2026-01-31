@@ -88,7 +88,8 @@ int main(){
     // will write the header
     ofstream outFile(fullPath);
     outFile << "n,matchingTime,verificationTime\n";
-
+    
+    // iterates through powers of 2 up to the specified power and performs matching and verification, recording the time taken for each
     for(int i = 1; i <= power; i++){
         int n = pow(2, i);
 
