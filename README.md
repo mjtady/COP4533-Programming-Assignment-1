@@ -22,4 +22,6 @@ The matching algorithm scales well alongside the increase of n; however as n inc
 2. g++ main.cpp -o main
 3. .\main, this will prompt you to enter a value n and a string for a filename
 4. ensure that plot.py is in the output folder, as well as having the correct name in pan.read_csv(" ".csv)
-Note: Two figures will appear, however, only look at figure 2.  
+Note: Two figures will appear, however, only look at figure 2.
+
+![Alt text](Figure_2.png)
