@@ -107,7 +107,7 @@ int main(){
 
         long long verifyTime = verificationTime(n, hospitalPrefs, studentPrefs, hospitalMatches, studentMatches);
 
-        // outFile << n << "," << matchTime << "," << verifyTime << "\n";
+        outFile << n << "," << matchTime << "," << verifyTime << "\n";
         outFile.flush();
 
         // cout << "Completed for n = " << n << "\n";
