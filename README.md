@@ -11,6 +11,9 @@ To run matcher, the example.in is provided
 2. g++ matcher.cpp -o main
 3. .\main, this will print out the matching results which you can compare with the expected example.out
 
+# Part A.2:
+test.cpp is just a standard test file that you can run to see the example.in and example.out. The resulting example.out by the matching algorithm fits with the expected output which is 1,1; 2,2; 3,3...8,8. Similarly with the given example.in from the assignment, the example.out that the matching algorithm outputted does not match with the given example.out, however, it is just one valid stable output. This is verified with the verifier.cpp
+
 # Part C :
 For Part C, to address the issues with graphing in C++, we created a main.cpp file that will take user input of n to be used as 2^n. It will then randomly generate preference lists for both hospitals and students. From there a matchingTime and verificationTime function will run and write the results into a .csv file using the formant n,matchingTime,verificationTime. The plot.py will then be run to generate the graph.
 
