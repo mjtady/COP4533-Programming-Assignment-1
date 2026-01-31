@@ -49,7 +49,7 @@ public:
             // "some hospital is free and hasn't been matched/assigned to every applicant"
             int hospital = freeHospitals.front();
             freeHospitals.pop(); // removes the hospital from the queue as it is being processed
-            
+
             if(hospitalNextProposal[hospital] >= n){
                 continue;
             }
@@ -73,6 +73,14 @@ public:
                 freeHospitals.push(hospital); 
             }
         }
+    }
+
+    vector<int> getHospital(){
+        return hospitalMatches;
+    }
+
+    vector<int> getStudent(){
+        return studentMatches;
     }
 
     // helper function for "trade up" step
