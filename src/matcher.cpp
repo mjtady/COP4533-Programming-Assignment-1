@@ -29,13 +29,13 @@ public:
         this->n = n;
         this->hospitalPreferences = hospitalPrefs;
         this->studentPreferences = studentPrefs;
-        this->hospitalMatches = vector<int>(n, -1); // -1 indicates unmatched
-        this->studentMatches = vector<int>(n, -1); // -1 indicates unmatched
-        this->hospitalNextProposal = vector<int>(n, 0); // index of next student to propose to for each hospital
+        this->hospitalMatches = vector<int>(n + 1, -1); // -1 indicates unmatched
+        this->studentMatches = vector<int>(n + 1, -1); // -1 indicates unmatched
+        this->hospitalNextProposal = vector<int>(n + 1, 0); // index of next student to propose to for each hospital
         this->counter = 0;
 
         // step 1 of the given pseudocode from chapter 1 slides
-        for(int i = 0; i < n; i++){
+        for(int i = 1; i <= n; i++){
             freeHospitals.push(i); // initially all hospitals are free
         }
     }
@@ -49,49 +49,55 @@ public:
             // "some hospital is free and hasn't been matched/assigned to every applicant"
             int hospital = freeHospitals.front();
             freeHospitals.pop(); // removes the hospital from the queue as it is being processed
-            //"a = 1st applicant on h's list to whom h has not been matched"
-            int student = hospitalPreferences[hospital][hospitalNextProposal[hospital]]; // accesses the array of student preferences for the specific hospital
             
             if(hospitalNextProposal[hospital] >= n){
                 continue;
             }
-
+            //"a = 1st applicant on h's list to whom h has not been matched"
+            int student = hospitalPreferences[hospital - 1][hospitalNextProposal[hospital]]; // accesses the array of student preferences for the specific hospital
             hospitalNextProposal[hospital]++;
             counter++; // increment proposal counter
-            int curr = studentMatches[student];
 
             if(studentMatches[student] == -1){ // "if (a is free)"
                 hospitalMatches[hospital] = student;
                 studentMatches[student] = hospital;
             }else if (tradeUp(student, hospital)){ // "else if (a prefers h to her/his current assignment h')"
+                int curr = studentMatches[student];
+                
+                hospitalMatches[curr] = -1;
+                freeHospitals.push(curr);
+                
                 hospitalMatches[hospital] = student;
                 studentMatches[student] = hospital;
             }else{ // "a rejects h"
-                hospitalMatches[curr] = -1; 
-                freeHospitals.push(curr); 
+                freeHospitals.push(hospital); 
             }
         }
     }
 
     // helper function for "trade up" step
+    // readjusted tradeUp logic was incorrect indexing when it came to accessing student preferences
+    // and there was a flaw when making comparisons using boolean logic directly on indices rather than the preference values
     bool tradeUp(int student, int newHospital){
         int curr = studentMatches[student];
-        for(int pref : studentPreferences[student]){
-            if(pref == newHospital){
-                return true;
+        int newPref = -1;
+        int currPref = -1;
+        for(int i = 0; i < n; i++){
+            if(studentPreferences[student - 1][i] == newHospital){
+                newPref = i;
             }
-            if(pref == curr){
-                return false; 
+            if(studentPreferences[student - 1][i] == curr){
+                currPref = i;
             }
         }
-        return false; 
+        return newPref < currPref;
     }
 
     void print(){
-        cout << counter << endl;
-        for(int i = 0; i < n; i++){
+        cout << n << endl;
+        for(int i = 1; i < n + 1; i++){
             cout << i << " " << hospitalMatches[i] << endl;
         }
     }
-    
+
 };

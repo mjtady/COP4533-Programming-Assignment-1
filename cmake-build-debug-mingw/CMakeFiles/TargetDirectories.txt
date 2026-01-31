@@ -1,0 +1,3 @@
+C:/Users/mjtad/COP4533-Programming-Assignment-1/cmake-build-debug-mingw/CMakeFiles/COP4533_Programming_Assignment_1.dir
+C:/Users/mjtad/COP4533-Programming-Assignment-1/cmake-build-debug-mingw/CMakeFiles/edit_cache.dir
+C:/Users/mjtad/COP4533-Programming-Assignment-1/cmake-build-debug-mingw/CMakeFiles/rebuild_cache.dir
